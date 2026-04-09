@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    container_name: shopstack-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ecommerce_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: ./server
+    container_name: shopstack-server
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PORT: 5001
+      DATABASE_URL: postgresql://postgres:password@db:5432/ecommerce_db?schema=public
+      JWT_SECRET: replace-me
+      STRIPE_SECRET_KEY: sk_test_replace_me
+      STRIPE_WEBHOOK_SECRET: whsec_replace_me
+      CLIENT_URL: http://localhost:5173
+      SERVER_PUBLIC_URL: http://localhost:5001
+      UPLOADS_DIR: uploads
+    ports:
+      - '5001:5001'
+    command: sh -c "npx prisma migrate deploy && npm run seed && npm start"
+
+  client:
+    build:
+      context: ./client
+      args:
+        VITE_API_URL: http://localhost:5001/api
+        VITE_STRIPE_PUBLISHABLE_KEY: pk_test_replace_me
+    container_name: shopstack-client
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - '5173:80'
+
+volumes:
+  postgres_data:
