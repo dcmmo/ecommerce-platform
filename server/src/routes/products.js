@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
     });
 
     return res.json(products);
-  } catch {
+  } catch (error) {
+    console.error('GET /products error:', error.message);
     return res.status(500).json({ message: 'Could not fetch products.' });
   }
 });
@@ -28,7 +29,8 @@ router.get('/categories', async (_req, res) => {
   try {
     const categories = await prisma.category.findMany({ orderBy: { name: 'asc' } });
     return res.json(categories);
-  } catch {
+  } catch (error) {
+    console.error('GET /categories error:', error.message);
     return res.status(500).json({ message: 'Could not fetch categories.' });
   }
 });
