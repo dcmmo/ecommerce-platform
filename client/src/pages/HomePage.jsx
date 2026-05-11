@@ -41,10 +41,10 @@ export default function HomePage() {
     <section>
       <div className="hero">
         <div>
-          <h1>Build a portfolio-ready storefront.</h1>
+          <h1>Your skin deserves the best.</h1>
           <p>
-            This version includes product editing, local image upload support,
-            stronger validation, admin workflows, and deployment files.
+            Explore our curated collection of cleansers, serums, sunscreens, lotions,
+            retinoids, and moisturizers — formulated for real results.
           </p>
         </div>
       </div>

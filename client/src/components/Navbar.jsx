@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <Link className="brand" to="/">
-        ShopStack
+        GlowShop
       </Link>
 
       <nav className="nav-links">

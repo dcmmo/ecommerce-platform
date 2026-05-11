@@ -1,7 +1,7 @@
 :root {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: #111827;
-  background: #f8fafc;
+  color: #2c2024;
+  background: #faf7f4;
 }
 
 * {
@@ -10,7 +10,7 @@
 
 body {
   margin: 0;
-  background: #f8fafc;
+  background: #faf7f4;
 }
 
 a {
@@ -77,13 +77,13 @@ button:disabled {
 }
 
 .primary-button {
-  background: #111827;
+  background: #8c5858;
   color: white;
 }
 
 .secondary-button {
-  background: #e5e7eb;
-  color: #111827;
+  background: #f0e6e6;
+  color: #5c2d2d;
 }
 
 .hero {
@@ -172,8 +172,8 @@ button:disabled {
   display: inline-block;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: #eef2ff;
-  color: #3730a3;
+  background: #f7e8e8;
+  color: #7c3d3d;
   font-size: 0.85rem;
 }
 
